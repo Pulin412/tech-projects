@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: qa-service-service
+spec:
+  selector:
+    app: qa-service
+#  type: NodePort   # removed so that access is limited via ingress only
+  ports:
+    - protocol: TCP
+      port: 8082
+      targetPort: 8082

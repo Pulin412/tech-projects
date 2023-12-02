@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-topic-job
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: create-topic
+          image: confluentinc/cp-kafka:6.2.1
+          command:
+            - "bash"
+            - "-c"
+            - "kafka-topics --create --topic qa-topic --partitions 1 --replication-factor 1 --bootstrap-server kafka-service:9092 && echo 'Topic created successfully!'"
+  backoffLimit: 4

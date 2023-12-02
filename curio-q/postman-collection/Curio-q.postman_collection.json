@@ -1,0 +1,481 @@
+{
+	"info": {
+		"_postman_id": "61a39be1-4670-4e75-a79e-39b9bd6671d2",
+		"name": "Curio-q",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4824640"
+	},
+	"item": [
+		{
+			"name": "auth-service",
+			"item": [
+				{
+					"name": "getTokenByUserEmail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"johndoe@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{auth-service-url}}/api/v1/auth/token",
+							"protocol": "http",
+							"host": [
+								"{{auth-service-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserByToken",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{auth-service-url}}/api/v1/auth/getUser?jwtToken=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lQGdtYWlsLmNvbSIsImlhdCI6MTY5MTUyNTk1MCwiZXhwIjoxNjkxNTI3MzkwfQ.r1MZAWohuSa-BuVhcjk4Lwt0CSFjRRw1lfJHLbSJlKI",
+							"protocol": "http",
+							"host": [
+								"{{auth-service-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"getUser"
+							],
+							"query": [
+								{
+									"key": "jwtToken",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lQGdtYWlsLmNvbSIsImlhdCI6MTY5MTUyNTk1MCwiZXhwIjoxNjkxNTI3MzkwfQ.r1MZAWohuSa-BuVhcjk4Lwt0CSFjRRw1lfJHLbSJlKI"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user-service",
+			"item": [
+				{
+					"name": "registerUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhQGdtYWlsLmNvbSIsImlhdCI6MTY4MDU0ODk3OSwiZXhwIjoxNjgwNTUwNDE5fQ.jy_qjesvJvdb6IQoR4I9ezyb2-fdHb8Tox0Rx3Os2Fk",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstname\": \"john\",\n  \"lastname\": \"doe\",\n  \"email\": \"johndoe@gmail.com\",\n  \"password\": \"pass\",\n  \"role\": \"ADMIN\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{user-service-url}}/api/v1/register",
+							"protocol": "http",
+							"host": [
+								"{{user-service-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhQGdtYWlsLmNvbSIsImlhdCI6MTY4MDU0ODk3OSwiZXhwIjoxNjgwNTUwNDE5fQ.jy_qjesvJvdb6IQoR4I9ezyb2-fdHb8Tox0Rx3Os2Fk",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"user1@gmail.com\",\n  \"password\": \"pass\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{user-service-url}}/api/v1/login",
+							"protocol": "http",
+							"host": [
+								"{{user-service-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserByEmail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMUBnbWFpbC5jb20iLCJpYXQiOjE2ODE3NjcwMzYsImV4cCI6MTY4MTc2ODQ3Nn0.lY0DxO_9GvBVRLwxGDNMuHc6NF51_Q85nazCaql9Xes",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{user-service-url}}/api/v1/user?email=user1@gmail.com",
+							"protocol": "http",
+							"host": [
+								"{{user-service-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "user1@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMUBnbWFpbC5jb20iLCJpYXQiOjE2ODE5ODQwNTYsImV4cCI6MTY4MTk4NTQ5Nn0.KvV3X0xvuE6kOevfds64P82Qc1lQ6tz8RPyRFmS2TTU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{user-service-url}}/api/v1/user/2",
+							"protocol": "http",
+							"host": [
+								"{{user-service-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "follow",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMUBnbWFpbC5jb20iLCJpYXQiOjE2ODE4MTQ5OTMsImV4cCI6MTY4MTgxNjQzM30.vGVNxXLeQZo8OUkok7nncH86hI3kbhFURnqeikwyfdY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"followerId\": \"1\",\n  \"followeeId\": \"2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{user-service-url}}/api/v1/follow",
+							"protocol": "http",
+							"host": [
+								"{{user-service-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"follow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "like",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMUBnbWFpbC5jb20iLCJpYXQiOjE2ODE5ODI1OTgsImV4cCI6MTY4MTk4NDAzOH0.c7YKewHf3EfYFCxi8raGQ8KOCHYqJ7KiBAXl00ntdT8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"likeId\": \"1\",\n  \"beingLikedId\": \"2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{user-service-url}}/api/v1/like",
+							"protocol": "http",
+							"host": [
+								"{{user-service-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"like"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllUsers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lQGdtYWlsLmNvbSIsImlhdCI6MTY5MTUyNzQ0NCwiZXhwIjoxNjkxNTI4ODg0fQ.4S3LI4rQD_Xy3UX85ULPgDbJYFaIggBUUZa9IcZ1pVA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{user-service-url}}/api/v1/admin/users",
+							"protocol": "http",
+							"host": [
+								"{{user-service-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeUser",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE2ODA3OTIxOTEsImV4cCI6MTY4MDc5MzYzMX0.gaXSJAVkQvJsIXJuPekv1-tSU8JRUAwKC_RR401zbx8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{user-service-url}}/api/v1/admin/user?email=user2@gmail.com",
+							"protocol": "http",
+							"host": [
+								"{{user-service-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"user"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "user2@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "qa-service",
+			"item": [
+				{
+					"name": "submitQuestion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lQGdtYWlsLmNvbSIsImlhdCI6MTY5MTQ0MTIwMywiZXhwIjoxNjkxNDQyNjQzfQ.9UAyGzL9qIcT9OfUAf_qpE3OQ6uxN8eBNP0gAOqV5lI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"johndoe@gmail.com\",\n  \"title\": \"personal question1\",\n  \"description\": \"what is LV's international exchange policy\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{qa-service-url}}/api/v1/question",
+							"protocol": "http",
+							"host": [
+								"{{qa-service-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"question"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "submitAnswer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMUBnbWFpbC5jb20iLCJpYXQiOjE2ODE5ODQwNTYsImV4cCI6MTY4MTk4NTQ5Nn0.KvV3X0xvuE6kOevfds64P82Qc1lQ6tz8RPyRFmS2TTU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"questionId\": \"1\",\n  \"answer\": \"you, fuck off!! Thanks\",\n  \"email\": \"user3@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{qa-service-url}}/api/v1/answer",
+							"protocol": "http",
+							"host": [
+								"{{qa-service-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"answer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllQuestions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lQGdtYWlsLmNvbSIsImlhdCI6MTY5MTUyNTk1MCwiZXhwIjoxNjkxNTI3MzkwfQ.r1MZAWohuSa-BuVhcjk4Lwt0CSFjRRw1lfJHLbSJlKI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{qa-service-url}}/api/v1/questions",
+							"protocol": "http",
+							"host": [
+								"{{qa-service-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"questions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "likeSubject",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMUBnbWFpbC5jb20iLCJpYXQiOjE2ODE5ODQwNTYsImV4cCI6MTY4MTk4NTQ5Nn0.KvV3X0xvuE6kOevfds64P82Qc1lQ6tz8RPyRFmS2TTU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": \"2\",\n  \"subjectId\": \"1\",\n  \"type\": \"ANSWER\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{qa-service-url}}/api/v1/like/subject",
+							"protocol": "http",
+							"host": [
+								"{{qa-service-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"like",
+								"subject"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "curioq-url",
+			"value": "http://{{host}}:{{user-service-port}}"
+		}
+	]
+}

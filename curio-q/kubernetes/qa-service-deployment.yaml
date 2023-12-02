@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qa-service-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qa-service
+  template:
+    metadata:
+      labels:
+        app: qa-service
+    spec:
+      containers:
+        - name: qa-service
+          image: pulin412/qa-service-image:latest
+          ports:
+            - containerPort: 8082
+          envFrom:
+            - configMapRef:
+                name: db-config-map
+          env:
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: "kafka-service:9092"
+            - name: KAFKA_TOPIC
+              value: "qa-topic"

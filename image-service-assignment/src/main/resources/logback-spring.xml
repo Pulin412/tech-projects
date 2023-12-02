@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+
+    <appender name="Console"
+              class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} [%thread] %highlight(%-5level) %cyan(%logger{15}) - %msg %n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <appender name="customDb" class="com.db.assignment.image_service.config.CustomDbAppender"/>
+
+    <root level="info">
+        <appender-ref ref="Console" />
+        <appender-ref ref="customDb"/>
+    </root>
+
+    <logger name="com.db" level="trace" additivity="false">
+        <appender-ref ref="Console" />
+        <appender-ref ref="customDb"/>
+    </logger>
+
+</configuration>
