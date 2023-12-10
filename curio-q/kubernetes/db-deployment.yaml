@@ -24,13 +24,13 @@ spec:
               value: admin
             - name: POSTGRES_DB
               value: user-db
-          resources:
-            requests:
-              memory: "50Mi"   # Minimum memory required
-              cpu: "10m"       # Minimum CPU required
-            limits:
-              memory: "100Mi"   # Maximum memory allowed
-              cpu: "15m"       # Maximum CPU allowed
+#          resources:
+#            requests:
+#              memory: "50Mi"   # Minimum memory required
+#              cpu: "10m"       # Minimum CPU required
+#            limits:
+#              memory: "100Mi"   # Maximum memory allowed
+#              cpu: "15m"       # Maximum CPU allowed
 #          volumeMounts:
 #            - name: database-data
 #              mountPath: /var/lib/postgresql/data

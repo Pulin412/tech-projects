@@ -1,32 +1,27 @@
 # local-setup
-
 - Run the services locally with `spring.profiles.active=local`
 - Use the target `start-local-services` from [Makefile](https://github.com/Pulin412/tech-projects/blob/main/curio-q/Makefile)
 
 ### Using Docker images
-
 - Run the script [start-curioq-local.sh](https://github.com/Pulin412/tech-projects/blob/main/curio-q/scripts/environments/local/start-curioq-local.sh) to start all services with dependencies.
 - Run the script [stop-curioq-local.sh](https://github.com/Pulin412/tech-projects/blob/main/curio-q/scripts/environments/local/stop-curioq-local.sh) to stop all services and dependencies.
 
   > CI workflow could be used here to update the docker images but directory change is required everytime in Docker files.
   
 # dev-setup
-
 - Kubernetes is used for management of containerized services. 
 
-### CI
+### Running kubernetes deployed services
+- Run the 
 
+### CI
 - Docker images are pushed to Docker hub using CI [workflows](https://github.com/Pulin412/tech-projects/tree/main/curio-q/.github/workflows)
 
-
 ### Services/Deployments
-
 - Pods are deployed using Docker desktop enabled Kubernetes (For local setup)
 - Make sure [create-topic](https://github.com/Pulin412/curio-q/blob/main/kubernetes/kafka-create-topic.yaml) job is completed before hitting the endpoints for qa-service.
 
-
 ### Ingress
-
 - Services can only be reached through the Ingress with details -
 > **Host**: curioq.com \
 > **Port**: 80
@@ -54,11 +49,9 @@ kubectl port-forward -n ingress-nginx service/ingress-nginx-controller 3000:80
 ```
 
 ### ConfigMaps
-
 - A configMap [db-config-map](https://github.com/Pulin412/curio-q/blob/main/kubernetes/db-config-map.yaml) is added for the Database related properties and added as env variables ref.
 
 ### Metrics
-
 - Create the metric service using the downloaded components.yaml from [here](https://github.com/kubernetes-sigs/metrics-server/releases)
     ```shell
     kubectl apply -f components.yaml
