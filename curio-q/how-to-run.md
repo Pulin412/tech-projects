@@ -10,7 +10,6 @@
   > CI workflow could be used here to update the docker images but directory change is required everytime in Docker files.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # dev-setup
 - Kubernetes is used for management of containerized services. 
@@ -18,8 +17,6 @@
 ### Running kubernetes deployed services
 - Run the script [start-deployments.sh](https://github.com/Pulin412/tech-projects/blob/main/curio-q/scripts/environments/minikube/start-deployments.sh) to apply all deployments.
 - Run the script [remove-deployments.sh](https://github.com/Pulin412/tech-projects/blob/main/curio-q/scripts/environments/minikube/remove-deployments.sh) to remove all deployments.
-
-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Detailed explanation of Kubernetes deployed features
 
