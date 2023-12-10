@@ -53,7 +53,7 @@ kubectl port-forward -n ingress-nginx service/ingress-nginx-controller 3000:80
 ```
 
 #### ConfigMaps
-- A configMap [db-config-map](https://github.com/Pulin412/curio-q/blob/main/kubernetes/db-config-map.yaml) is added for the Database related properties and added as env variables ref.
+- A configMap [db-config-map](https://github.com/Pulin412/tech-projects/blob/main/curio-q/kubernetes/db-config-map.yaml) is added for the Database related properties and added as env variables ref.
 
 #### Metrics
 - Create the metric service using the downloaded components.yaml from [here](https://github.com/kubernetes-sigs/metrics-server/releases)
