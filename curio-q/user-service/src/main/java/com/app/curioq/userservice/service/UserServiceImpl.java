@@ -218,6 +218,7 @@ public class UserServiceImpl implements UserService {
         user.getLikes().add(userToLike);
         userRepository.save(user);
 
+        log.info(user.getEmail() + " liked " + userToLike.getEmail());
         return UserResponseDTO.builder().response(user.getEmail() + " liked " + userToLike.getEmail()).build();
     }
 }

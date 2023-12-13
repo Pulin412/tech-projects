@@ -67,3 +67,19 @@ kubectl port-forward -n ingress-nginx service/ingress-nginx-controller 3000:80
     kubectl top nodes
     kubectl top pod -A
     ```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Load Test
+
+- Load test scripts are added [here](https://github.com/Pulin412/tech-projects/blob/main/curio-q/scripts/load-testing/)
+- Currently only 1 scenario : `when a user likes another user` is load tested as sample.
+- Run the load test (for above scenario) using - 
+
+  ```shell
+   k6 run -e K6_ENV=local -e SERVICE_URL=http://localhost:8081/api/v1/like -e AUTH_URL=http://localhost:8080/api/v1/auth/token user-load-test.js
+  ```
+- Replicate the other load testing scenarios in the same script as needed.
+- This is tested for `local` environment only currently.
+
+  > [k6](https://k6.io/docs/get-started/running-k6/) CLI is required to run the load test.
